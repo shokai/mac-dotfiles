@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 require 'webrick'
 
-document_root = ARGV.first ? ARGV.shift : './'
-port = ARGV.first ? ARGV.shift.to_i : 8080
+port = (ARGV.shift||8080).to_i
 
 server = WEBrick::HTTPServer.new({
-  :DocumentRoot => document_root,
+  :DocumentRoot => './',
   :BindAddress => '0.0.0.0',
   :Port => port
 })
