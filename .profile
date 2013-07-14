@@ -1,6 +1,4 @@
-#export LC_ALL=en
 alias screen="screen -U -O"
-#keychain ~/.ssh/id_rsa
 
 ## cmd
 export EDITOR='emacs'
