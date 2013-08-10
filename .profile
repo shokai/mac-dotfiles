@@ -37,7 +37,8 @@ export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
 ## node.js
-[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh
+export PATH=$PATH:$HOME/.ndenv/bin
+eval "$(ndenv init -)"
 
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
