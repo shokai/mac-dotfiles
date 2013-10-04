@@ -6,12 +6,14 @@ if ARGV.empty?
   app_name = File.basename $0
   STDERR.puts "e.g.  #{app_name} http://rocketio-chat.herokuapp.com"
   STDERR.puts "e.g.  #{app_name} http://rocketio-chat.herokuapp.com comet"
+  STDERR.puts "e.g.  #{app_name} http://rocketio-chat.herokuapp.com websocket ch1"
   exit 1
 end
 url = ARGV.shift
 type = ARGV.shift || :websocket
+channel = ARGV.shift
 
-io = Sinatra::RocketIO::Client.new(url, :type => type).connect
+io = Sinatra::RocketIO::Client.new(url, :type => type, :channel => channel).connect
 puts "connecting #{url}"
 
 io.on :* do |event_name, data|
