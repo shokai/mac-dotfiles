@@ -3,5 +3,5 @@ rm -f /tmp/gifsnap_*.gif
 imagesnap -w 2.0 /tmp/gifsnap_01.gif
 imagesnap -w 2.0 /tmp/gifsnap_02.gif
 imagesnap -w 2.0 /tmp/gifsnap_03.gif
-convert /tmp/gifsnap_*.gif gifsnap.gif
+convert -delay 8 -loop 0 -geometry 240x /tmp/gifsnap_*.gif gifsnap.gif
 rm -f /tmp/gifsnap_*.gif
