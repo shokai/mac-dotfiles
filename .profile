@@ -30,7 +30,7 @@ export CLASSPATH=$CLASSPATH:$HOME/lib/java/jai/lib:$HOME/lib/java
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 export PATH=$PATH:$JAVA_HOME/bin
 export 'JRUBY_OPTS=-X-C'
-export 'JAVA_OPTS=-d32 -Dfile.encoding=UTF-8'
+export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 
 ## Ruby
 export PATH=$PATH:$HOME/.rbenv/bin
