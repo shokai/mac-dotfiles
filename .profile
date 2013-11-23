@@ -36,10 +36,6 @@ export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
-## node.js
-export PATH=$PATH:$HOME/.ndenv/bin
-eval "$(ndenv init -)"
-
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 
