@@ -3,3 +3,5 @@
 	email = hashimoto@shokai.org
 [color]
 	ui = auto
+[push]
+	default = simple
