@@ -11,8 +11,9 @@ def show_current_status
 end
 
 def show_help
-  STDERR.puts "% vnc start  # enable VNC"
-  STDERR.puts "% vnc stop   # disable VNC"
+  app_name = File.basename $0
+  STDERR.puts "% #{app_name} start  # enable VNC"
+  STDERR.puts "% #{app_name} stop   # disable VNC"
   show_current_status
 end
 
