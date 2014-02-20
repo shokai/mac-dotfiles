@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+## enable/disable VNC on Mac OSX (testing with OSX 10.9)
+
+def show_current_status
+  if system "sudo launchctl list | grep com.apple.screensharing > /dev/null" and
+  system "sudo defaults read /var/db/launchd.db/com.apple.launchd/overrides.plist com.apple.screensharing -dict Disabled | grep 'Disabled = 0' > /dev/null"
+    puts "VNC: enabled"
+  else
+    puts "VNC: disabled"
+  end
+end
+
+def show_help
+  STDERR.puts "% vnc start  # enable VNC"
+  STDERR.puts "% vnc stop   # disable VNC"
+  show_current_status
+end
+
+if ARGV.empty?
+  show_help
+  exit 1
+end
+
+enable = case ARGV.shift
+         when "start" then true
+         when "stop" then false
+         else
+           show_help
+           exit 1
+         end
+
+system "sudo defaults write /var/db/launchd.db/com.apple.launchd/overrides.plist com.apple.screensharing -dict Disabled -bool #{!enable}"
+
+if enable
+  system "sudo launchctl load /System/Library/LaunchDaemons/com.apple.screensharing.plist"
+else
+  system "sudo launchctl unload /System/Library/LaunchDaemons/com.apple.screensharing.plist"
+end
+
+show_current_status
