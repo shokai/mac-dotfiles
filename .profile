@@ -27,7 +27,6 @@ alias jar='LC_ALL=en jar -J-Dfile.encoding=UTF8'
 alias ant='LC_ALL=en ant'
 export CLASSPATH=.
 export CLASSPATH=$CLASSPATH:$HOME/lib/java/jai/lib:$HOME/lib/java
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 export PATH=$PATH:$JAVA_HOME/bin
 export 'JRUBY_OPTS=-X-C'
 export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
