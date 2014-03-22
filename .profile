@@ -38,5 +38,6 @@ eval "$(rbenv init -)"
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias mou=open /Applications/Mou.app
+. `brew --prefix`/etc/profile.d/z.sh
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
