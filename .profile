@@ -21,6 +21,11 @@ export BOOST_ROOT=/usr/local/include/boost
 export CC=/usr/bin/gcc-4.2
 export CXX=/usr/bin/g++-4.2
 
+## Golang
+export GOROOT=`go env GOROOT`
+export GOPATH=$HOME/lib/go
+export PATH=$PATH:$GOROOT/bin
+
 ## Java
 alias javac='LC_ALL=en javac -J-Dfile.encoding=UTF8'
 alias jar='LC_ALL=en jar -J-Dfile.encoding=UTF8'
