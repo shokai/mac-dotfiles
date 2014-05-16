@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+puts "👀\n👃\n👄  < #{ ARGV.empty? ? ARGF.read : ARGV.join(' ') }"
