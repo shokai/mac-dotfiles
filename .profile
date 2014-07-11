@@ -46,3 +46,6 @@ alias mou=open /Applications/Mou.app
 . `brew --prefix`/etc/profile.d/z.sh
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
+
+# added by travis gem
+[ -f /Users/sho/.travis/travis.sh ] && source /Users/sho/.travis/travis.sh
