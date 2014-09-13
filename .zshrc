@@ -11,10 +11,12 @@ setopt pushd_ignore_dups
 RPROMPT="[%~]"
 compinit
 
-HISTFILE=$HOME/.zsh-history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt extended_history
+setopt share_history
+
 function history-all { history -E 1 }
 
 typeset -A myabbrev
@@ -22,9 +24,6 @@ myabbrev=(
     "ll"    "| less"
     "lg"    "| grep"
 )
-
-#abbrev
-setopt share_history
 
 if [ "$TERM" = "screen" ]; then
 	chpwd () { echo -n "_`dirs`\\" }
