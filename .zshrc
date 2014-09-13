@@ -11,10 +11,10 @@ setopt pushd_ignore_dups
 RPROMPT="[%~]"
 compinit
 
-HISTFILE=$HOME/.zsh-history 
-HISTSIZE=100000 
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
 SAVEHIST=100000
-setopt extended_history 
+setopt extended_history
 function history-all { history -E 1 }
 
 typeset -A myabbrev
@@ -39,7 +39,7 @@ if [ "$TERM" = "screen" ]; then
 					cmd=(builtin jobs -l $cmd[2])
 				fi
 				;;
-			%*) 
+			%*)
 				cmd=(builtin jobs -l $cmd[1])
 				;;
 			cd)
