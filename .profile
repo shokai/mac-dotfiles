@@ -36,6 +36,9 @@ export PATH=$PATH:$JAVA_HOME/bin
 export 'JRUBY_OPTS=-X-C'
 export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 
+## Android
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
 ## Ruby
 export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
