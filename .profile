@@ -46,6 +46,7 @@ eval "$(rbenv init -)"
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias macdown="open -a /Applications/MacDown.app"
+alias gitx="open -a /Applications/GitX.app"
 . `brew --prefix`/etc/profile.d/z.sh
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
