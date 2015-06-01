@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir /Volumes/edishon
+sshfs edishon: /Volumes/edishon
