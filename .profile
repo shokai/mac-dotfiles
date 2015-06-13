@@ -43,6 +43,9 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
+## Node.js
+export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
+
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias macdown="open -a /Applications/MacDown.app"
