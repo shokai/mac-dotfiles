@@ -44,6 +44,8 @@ export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
 ## Node.js
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 ## misc
