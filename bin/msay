@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -d "message=$1" http://masui.sfc.keio.ac.jp/say/say
+curl -d "tuple={\"type\":\"say\",\"value\":\"$1\",\"where\":\"delta\"}" http://linda-server.herokuapp.com/masuilab
