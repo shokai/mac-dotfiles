@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 now = Time.now
-s = now.min == 0 ? "#{now.hour}時" : now.strftime('%k時%M分').strip
-puts s
-system "say #{s} #{ARGV.join ' '}"
+s = now.min == 0 ? "#{now.hour}時" : "#{now.hour}時#{now.min}分"
+cmd = "say #{s} #{ARGV.join ' '}"
+puts cmd
+system cmd
