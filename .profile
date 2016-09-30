@@ -18,8 +18,12 @@ export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=/usr/local/include:$CPLUS_INCLUDE_PATH
 export BOOST_ROOT=/usr/local/include/boost
-export CC=/usr/bin/gcc-4.2
-export CXX=/usr/bin/g++-4.2
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+
+## Ruby
+export RBENV_ROOT=/usr/local/var/rbenv
+export PATH=/usr/local/var/rbenv/shims:$PATH
 
 ## Golang
 export GOROOT=`go env GOROOT`
