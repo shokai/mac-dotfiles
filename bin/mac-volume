@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+module Volume
+  def self.settings
+    `osascript -e "get volume settings"`
+  end
+
+  def self.volume
+    `osascript -e "(get volume settings)'s output volume"`
+  end
+
+  def self.volume=(val)
+    `osascript -e "set volume #{val}/100*7"`
+  end
+
+  def self.muted?
+    `osascript -e "(get volume settings)'s output muted"`
+  end
+
+  def self.mute
+    `osascript -e "set volume with output muted"`
+  end
+
+  def self.unmute
+    `osascript -e "set volume without output muted"`
+  end
+end
+
+arg = ARGV.shift
+
+case arg
+when nil, 'settings'
+  puts Volume.settings
+when 'mute'
+  Volume.mute
+  puts 'muted'
+when 'unmute'
+  Volume.unmute
+  puts 'unmuted'
+when /\d+/
+  puts Volume.volume = arg
+else
+  puts """Mac Volume
+ % mac-volume
+ % mac-volume 100
+ % mac-volume mute
+ % mac-volume unmute
+"""
+end
