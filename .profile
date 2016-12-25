@@ -44,8 +44,6 @@ export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 ## Node.js
-# export NVM_DIR=~/.nvm
-# source $(brew --prefix nvm)/nvm.sh
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 ## misc
