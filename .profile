@@ -44,15 +44,14 @@ export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 ## Node.js
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias macdown="open -a /Applications/MacDown.app"
 alias gitx="open -a /Applications/GitX.app"
-. `brew --prefix`/etc/profile.d/z.sh
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
 
