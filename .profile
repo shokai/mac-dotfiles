@@ -46,6 +46,9 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 ## Node.js
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
+## Google cloud SDK
+export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
+
 ## misc
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias macdown="open -a /Applications/MacDown.app"
