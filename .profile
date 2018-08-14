@@ -26,9 +26,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 export PATH=/usr/local/var/rbenv/shims:$PATH
 
 ## Golang
-export GOROOT=`go env GOROOT`
-export GOPATH=$HOME/lib/go
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$HOME/go/bin
 
 ## Java
 alias javac='LC_ALL=en javac -J-Dfile.encoding=UTF8'
