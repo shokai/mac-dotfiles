@@ -48,7 +48,7 @@ export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
 
 ## misc
-export COMPOSE_HTTP_TIMEOUT=36000
+export COMPOSE_HTTP_TIMEOUT=864000
 export CRX_KEY=$HOME/.chrome_ext/key.pem
 alias macdown="open -a /Applications/MacDown.app"
 alias gitx="open -a /Applications/GitX.app"
