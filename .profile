@@ -38,22 +38,13 @@ export PATH=$PATH:$JAVA_HOME/bin
 export 'JRUBY_OPTS=-X-C'
 export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 
-## Android
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
 ## Node.js
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 ## Google cloud SDK
 export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
 
-## misc
+## Docker compose
 export COMPOSE_HTTP_TIMEOUT=864000
-export CRX_KEY=$HOME/.chrome_ext/key.pem
-alias macdown="open -a /Applications/MacDown.app"
-alias gitx="open -a /Applications/GitX.app"
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
-
-# added by travis gem
-[ -f /Users/sho/.travis/travis.sh ] && source /Users/sho/.travis/travis.sh
