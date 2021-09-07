@@ -183,7 +183,7 @@ function rprompt-git-current-branch {
     if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
         return
     fi
-    name=$(git symbolic-ref HEAD | sed 's/^refs\/heads\///')
+    name=$(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')
     if [[ -z $name ]]; then
         return
     fi
