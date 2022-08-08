@@ -6,4 +6,4 @@
 [push]
 	default = simple
 [core]
-    excludesfile = /Users/sho/.gitignore.global
+    excludesfile = /Users/shokai/.gitignore.global
