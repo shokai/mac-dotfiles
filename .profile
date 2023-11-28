@@ -11,6 +11,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/X11/bin:$PATH
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 export PATH=$PATH:/usr/local/CrossPack-AVR/bin
 export PATH=$PATH:/usr/local/heroku/bin
+export PATH=$PATH:/opt/homebrew/bin
 
 ## C
 export LIBRARY_PATH=/usr/local/lib:/usr/lib:$LIBRARY_PATH
