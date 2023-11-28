@@ -2,8 +2,6 @@ alias screen="screen -U -O"
 
 ## cmd
 export EDITOR='emacs'
-export LESS='-R'
-export LESSOPEN='| $HOME/.source-hilite/src-hilite-lesspipe.sh %s'
 export GREP_OPTIONS='--color=auto'
 
 ## PATH
