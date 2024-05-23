@@ -7,7 +7,6 @@ export GREP_OPTIONS='--color=auto'
 ## PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/X11/bin:$PATH
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
-export PATH=$PATH:/usr/local/CrossPack-AVR/bin
 export PATH=$PATH:/usr/local/heroku/bin
 
 ## homebrew
