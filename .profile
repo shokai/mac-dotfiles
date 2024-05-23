@@ -9,7 +9,14 @@ export PATH=/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/X11/bin:$PATH
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 export PATH=$PATH:/usr/local/CrossPack-AVR/bin
 export PATH=$PATH:/usr/local/heroku/bin
-export PATH=$PATH:/opt/homebrew/bin
+
+## homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
 ## C
 export LIBRARY_PATH=/usr/local/lib:/usr/lib:$LIBRARY_PATH
