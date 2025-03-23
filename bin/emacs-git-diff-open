@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# デフォルトはmainブランチとの差分
+TARGET_BRANCH=${1:-main}
+
+emacs $(git diff --name-only "$TARGET_BRANCH")
