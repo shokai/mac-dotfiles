@@ -203,3 +203,16 @@ function rprompt-git-current-branch {
 }
 setopt prompt_subst
 RPROMPT='[`rprompt-git-current-branch`%~]'
+
+# emacs-git-diff-open の補完設定
+_emacs_git_diff_open_completions() {
+  # 引数が既に1つある場合は補完しない
+  if (( CURRENT > 2 )); then
+    return 0
+  fi
+  
+  local -a branches
+  branches=($(git branch --format='%(refname:short)'))
+  _describe 'branches' branches
+}
+compdef _emacs_git_diff_open_completions emacs-git-diff-open
