@@ -210,7 +210,7 @@ _emacs_git_diff_open_completions() {
   if (( CURRENT > 2 )); then
     return 0
   fi
-  
+
   local -a branches
   branches=($(git branch --format='%(refname:short)'))
   _describe 'branches' branches
