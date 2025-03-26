@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 保存先ディレクトリを作成（存在しない場合）
+save_dir="$HOME/tmux-capture"
+mkdir -p "$save_dir"
+
+output_file="$save_dir/$(date +%Y%m%d-%H%M%S).txt"
+
+# 引数がない場合は現在のペインの内容を保存
+if [ $# -eq 0 ]; then
+  tmux capture-pane -S - -E - -p > "$output_file"
+  echo "現在のペインの内容を保存しました: $output_file"
+  exit 0
+fi
+
+# 引数がある場合は指定されたセッション:ウィンドウの内容を保存
+content=$(tmux capture-pane -t $1 -S - -E - -p)
+echo "$content" > "$output_file"
+total_lines=$(echo "$content" | wc -l | tr -d ' ')
+head_lines=$(echo "$content" | head -n 10)
+tail_lines=$(echo "$content" | tail -n 10)
+
+echo "セッション:ウィンドウ '$1' の内容を保存しました: $output_file (全 $total_lines 行)"
+echo "先頭10行:"
+echo "$head_lines"
+echo "..."
+echo "末尾10行:"
+echo "$tail_lines"
