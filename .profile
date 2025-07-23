@@ -58,3 +58,6 @@ alias vscode="open -a /Applications/Visual\ Studio\ Code.app"
 
 
 [[ -s $HOME/.local_profile ]] && source $HOME/.local_profile
+
+## LMStudio
+export PATH="$PATH:$HOME/.lmstudio/bin"
