@@ -44,7 +44,7 @@ export 'JRUBY_OPTS=-X-C'
 export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 
 ## Node.js
-export PATH=~/.npm-global/bin:$PATH
+export PATH=$HOME/.npm-global/bin:$PATH
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 ## Google cloud SDK
