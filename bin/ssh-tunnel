@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Cleanup function to stop services
+cleanup() {
+    echo ""
+    echo "Stopping services..."
+
+    # Kill cloudflared if it's still running
+    if [ ! -z "$CLOUDFLARED_PID" ] && kill -0 "$CLOUDFLARED_PID" 2>/dev/null; then
+        echo "Stopping cloudflared tunnel..."
+        kill "$CLOUDFLARED_PID" 2>/dev/null || true
+        wait "$CLOUDFLARED_PID" 2>/dev/null || true
+    fi
+
+    # Stop SSH service
+    echo "Stopping SSH service..."
+    sudo launchctl unload -w /System/Library/LaunchDaemons/ssh.plist 2>/dev/null || true
+    sudo launchctl disable system/com.openssh.sshd 2>/dev/null || true
+
+    echo "All services stopped."
+    exit 0
+}
+
+# Trap signals for cleanup
+trap cleanup SIGINT SIGTERM EXIT
+
+# Check if CLOUDFLARE_TUNNEL_TOKEN is set
+if [ -z "$CLOUDFLARE_TUNNEL_TOKEN" ]; then
+    echo "Error: CLOUDFLARE_TUNNEL_TOKEN environment variable is not set"
+    exit 1
+fi
+
+# Check if cloudflared is installed
+if ! command -v cloudflared &> /dev/null; then
+    echo "Error: cloudflared command not found"
+    exit 1
+fi
+
+echo "Starting SSH service..."
+sudo launchctl enable system/com.openssh.sshd
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+# Wait a moment for SSH to start
+sleep 1
+
+echo "Starting cloudflared tunnel..."
+cloudflared tunnel run --token "$CLOUDFLARE_TUNNEL_TOKEN" &
+CLOUDFLARED_PID=$!
+
+echo "Services started successfully!"
+echo "SSH service: running"
+echo "Cloudflared tunnel: running (PID: $CLOUDFLARED_PID)"
+echo ""
+echo "Press Ctrl+C to stop all services..."
+
+# Wait for cloudflared process
+wait "$CLOUDFLARED_PID"
