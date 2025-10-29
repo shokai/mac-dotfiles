@@ -2,6 +2,20 @@
 
 set -e
 
+# Stop services function
+stop_services() {
+    echo "Stopping SSH service..."
+    sudo launchctl unload -w /System/Library/LaunchDaemons/ssh.plist 2>/dev/null || true
+    sudo launchctl disable system/com.openssh.sshd 2>/dev/null || true
+    echo "SSH service stopped."
+}
+
+# Handle stop command
+if [ "$1" = "stop" ]; then
+    stop_services
+    exit 0
+fi
+
 # Cleanup function to stop services
 cleanup() {
     echo ""
