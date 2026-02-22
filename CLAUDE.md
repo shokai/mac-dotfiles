@@ -22,7 +22,6 @@ git mv old_path new_path
 2. formattingとlintingを実行する
 3. ユーザーのレビューを待つ
 4. 「git commit」「commitして」等の明示的な指示があった場合のみcommitする
-5. commit前に`git branch --show-current`で現在のbranchを確認する。`main` branchの場合はcommitせず停止し、変更内容に基づいた適切なbranch名を提案してユーザーに確認する
 
 これにより、ユーザーがリポジトリにcommitされる前にすべての変更をレビュー・承認できる。
 
