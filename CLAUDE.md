@@ -19,7 +19,7 @@ git mv old_path new_path
 ユーザーから明示的に指示されない限り、絶対にcommitしないこと。常に以下の手順を守ること:
 
 1. 依頼されたコード変更を行う
-2. formattingとlintingを実行する
+2. formattingとlintingを実行する（プロジェクト指定のフォーマッタがあればそちらを優先）
 3. ユーザーのレビューを待つ
 4. 「git commit」「commitして」等の明示的な指示があった場合のみcommitする
 
@@ -27,7 +27,7 @@ git mv old_path new_path
 
 ## タスク完了後・git commit前に実行するコマンド
 
-コード変更後、すぐに以下を実行すること:
+作業ディレクトリのプロジェクトにフォーマッタが指定されている場合（例: package.jsonのscripts、Makefile、プロジェクトのCLAUDE.md等）はそちらを優先すること。特に指定がない場合は、コード変更後にすぐに以下を実行すること:
 
 ```
 oxfmt <changed-file>
