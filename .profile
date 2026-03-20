@@ -47,6 +47,11 @@ export 'JAVA_OPTS=-Dfile.encoding=UTF-8'
 export PATH=$HOME/.npm-global/bin:$PATH
 export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
+# bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export PATH=$PATH:$HOME/.bun/bin
+
+
 ## Google cloud SDK
 export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
 
