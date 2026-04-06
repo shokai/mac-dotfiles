@@ -11,7 +11,8 @@
     "library-update-review@shokai-agent-skills": true,
     "conversation-context@shokai-agent-skills": true,
     "sanity-review@shokai-agent-skills": true,
-    "prose-proofreading@shokai-agent-skills": true
+    "prose-proofreading@shokai-agent-skills": true,
+    "subagent-consultation@shokai-agent-skills": true
   },
   "skipDangerousModePermissionPrompt": true
 }
