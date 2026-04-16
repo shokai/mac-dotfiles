@@ -1,9 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(command -v codex)",
-      "Bash(codex exec *)"
-    ]
+    "allow": ["Bash(command -v codex)", "Bash(codex exec *)"]
   },
   "model": "opus[1m]",
   "enabledPlugins": {
@@ -13,6 +10,5 @@
     "sanity-review@shokai-agent-skills": true,
     "prose-proofreading@shokai-agent-skills": true,
     "subagent-consultation@shokai-agent-skills": true
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }
