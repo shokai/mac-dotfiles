@@ -3,7 +3,8 @@
     "allow": [
       "Bash(command -v codex)",
       "Bash(codex exec *)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "enabledPlugins": {
@@ -14,5 +15,6 @@
     "prose-proofreading@shokai-agent-skills": true,
     "subagent-consultation@shokai-agent-skills": true
   },
-  "theme": "dark-daltonized"
+  "theme": "dark-daltonized",
+  "skipAutoPermissionPrompt": true
 }
