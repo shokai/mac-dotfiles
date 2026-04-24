@@ -14,5 +14,5 @@
     "prose-proofreading@shokai-agent-skills": true,
     "subagent-consultation@shokai-agent-skills": true
   },
-  "skipAutoPermissionPrompt": true
+  "theme": "dark-daltonized"
 }
