@@ -216,3 +216,6 @@ _emacs_git_diff_open_completions() {
   _describe 'branches' branches
 }
 compdef _emacs_git_diff_open_completions emacs-git-diff-open
+
+# direnv
+eval "$(direnv hook zsh)"
