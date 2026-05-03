@@ -13,7 +13,16 @@
     "conversation-context@shokai-agent-skills": true,
     "sanity-review@shokai-agent-skills": true,
     "prose-proofreading@shokai-agent-skills": true,
-    "subagent-consultation@shokai-agent-skills": true
+    "subagent-consultation@shokai-agent-skills": true,
+    "cosense-cli@cosense-cli": true
+  },
+  "extraKnownMarketplaces": {
+    "cosense-cli": {
+      "source": {
+        "source": "github",
+        "repo": "nota/cosense-cli"
+      }
+    }
   },
   "theme": "dark-daltonized",
   "skipAutoPermissionPrompt": true
