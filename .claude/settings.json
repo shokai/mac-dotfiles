@@ -21,7 +21,8 @@
       "source": {
         "source": "github",
         "repo": "nota/cosense-cli"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "theme": "dark-daltonized",
