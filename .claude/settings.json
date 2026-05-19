@@ -1,9 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(command -v codex)",
-      "Bash(codex exec *)"
-    ],
+    "allow": ["Bash(command -v codex)", "Bash(codex exec *)"],
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
@@ -27,5 +24,19 @@
   },
   "theme": "dark-daltonized",
   "skipAutoPermissionPrompt": true,
-  "effortLevel": "xhigh"
+  "effortLevel": "xhigh",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/.claude/hooks/notify-if-bg.sh" }]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/.claude/hooks/notify-if-bg.sh" }]
+      }
+    ]
+  }
 }
