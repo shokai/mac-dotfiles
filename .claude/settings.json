@@ -44,7 +44,7 @@
     "cosense-cli": {
       "source": {
         "source": "github",
-        "repo": "nota/cosense-cli"
+        "repo": "helpfeel/cosense-cli"
       },
       "autoUpdate": true
     }
