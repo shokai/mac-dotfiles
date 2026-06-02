@@ -6,7 +6,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -49,7 +48,7 @@
       "autoUpdate": true
     }
   },
+  "effortLevel": "xhigh",
   "theme": "dark-daltonized",
-  "skipAutoPermissionPrompt": true,
-  "effortLevel": "high"
+  "skipAutoPermissionPrompt": true
 }
