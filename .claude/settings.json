@@ -50,5 +50,6 @@
   },
   "effortLevel": "xhigh",
   "theme": "dark-daltonized",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
 }
