@@ -49,7 +49,7 @@
     }
   },
   "effortLevel": "xhigh",
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipAutoPermissionPrompt": true
 }
