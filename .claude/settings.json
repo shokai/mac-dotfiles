@@ -37,7 +37,8 @@
     "sanity-review@shokai-agent-skills": true,
     "prose-proofreading@shokai-agent-skills": true,
     "subagent-consultation@shokai-agent-skills": true,
-    "cosense-cli@cosense-cli": true
+    "cosense-cli@cosense-cli": true,
+    "unconventional-simplification@shokai-agent-skills": true
   },
   "extraKnownMarketplaces": {
     "cosense-cli": {
