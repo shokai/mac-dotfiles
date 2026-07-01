@@ -38,7 +38,8 @@
     "prose-proofreading@shokai-agent-skills": true,
     "subagent-consultation@shokai-agent-skills": true,
     "cosense-cli@cosense-cli": true,
-    "unconventional-simplification@shokai-agent-skills": true
+    "unconventional-simplification@shokai-agent-skills": true,
+    "slack@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "cosense-cli": {
