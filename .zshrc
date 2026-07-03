@@ -219,3 +219,47 @@ compdef _emacs_git_diff_open_completions emacs-git-diff-open
 
 # direnv
 eval "$(direnv hook zsh)"
+
+#
+# git worktree remove/move/lock/unlock で worktree 名を補完できるようにする
+#
+# 標準の __git_worktrees (/usr/share/zsh/5.9/functions/_git) は候補が絶対パスで、
+# 先頭から絶対パスを打たない限りマッチしないため実質サジェストが効かない。
+# ここでは main worktree (remove等の対象にできない) を除外し、worktree の
+# ディレクトリ名を候補にする (一意なら git は末尾のパス要素だけで特定できる)。
+__my_git_worktrees() {
+  local -a records=( ${(ps.\n\n.)"$(_call_program directories git worktree list --porcelain)"} )
+  local -a paths names hashes branches candidates descriptions
+  local rec dir branch cand
+  local -i i
+  # 先頭レコードは main worktree なので除く
+  for rec in ${records[2,-1]}; do
+    dir=${${rec%%$'\n'*}#worktree }
+    paths+=( $dir )
+    names+=( ${dir:t} )
+    hashes+=( ${${${"${(f)rec}"[2]}#HEAD }[1,9]} )
+    branch=${${"${(f)rec}"[3]}#branch refs/heads/}
+    if [[ $branch == detached ]]; then
+      branches+=( '(detached HEAD)' )
+    else
+      branches+=( "[$branch]" )
+    fi
+  done
+  (( $#paths )) || return 1
+  for (( i = 1; i <= $#paths; i++ )); do
+    # ディレクトリ名が他の worktree と重複する場合はフルパスで補完する
+    cand=${names[i]}
+    (( ${names[(Ie)$cand]} != ${names[(ie)$cand]} )) && cand=${paths[i]}
+    candidates+=( $cand )
+    descriptions+=( "$cand"$'\t'"${hashes[i]} ${branches[i]} ${paths[i]}" )
+  done
+  _wanted directories expl 'working tree' \
+    compadd -M 'l:|=* r:|=*' -S ' ' -ld descriptions -a candidates
+}
+
+# _git 本体をロードし、worktree 補完の呼び出し先を上書き版に差し替える。
+# __git_worktrees 自体はガードなしで再定義されるため、直接の上書きでは消される。
+# zsh 更新で置換対象の文字列が見つからなくなった場合は標準の挙動のままになる。
+if autoload -Uz +X _git 2>/dev/null; then
+  functions[_git]=${functions[_git]/'__git_worktrees && ret=0'/'__my_git_worktrees && ret=0'}
+fi
