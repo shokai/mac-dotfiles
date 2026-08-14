@@ -7,3 +7,5 @@
 	default = simple
 [core]
     excludesfile = /Users/shokai/.gitignore.global
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
