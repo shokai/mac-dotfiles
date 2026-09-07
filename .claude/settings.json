@@ -54,5 +54,7 @@
   "effortLevel": "xhigh",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
 }
