@@ -1,9 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(command -v codex)",
-      "Bash(codex exec *)"
-    ],
+    "allow": ["Bash(command -v codex)", "Bash(codex exec *)"],
     "defaultMode": "auto"
   },
   "hooks": {
@@ -40,7 +37,8 @@
     "cosense-cli@cosense-cli": true,
     "unconventional-simplification@shokai-agent-skills": true,
     "slack@claude-plugins-official": true,
-    "codepatrol@shokai-agent-skills": true
+    "codepatrol@shokai-agent-skills": true,
+    "software-factory-mode@shokai-agent-skills": true
   },
   "extraKnownMarketplaces": {
     "cosense-cli": {
