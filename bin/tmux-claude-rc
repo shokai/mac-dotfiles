@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+# tmuxは-cに存在しないディレクトリを渡してもerrorにせず、別のディレクトリでwindowを開く
+dir=$(cd "${1:-.}" && pwd)
+
+# claudeをwindowのコマンドにすると、claudeの終了と同時にwindowが閉じ、起動に失敗した時のerrorを読めない
+pane=$(tmux new-window -c "$dir" -P -F '#{pane_id}')
+tmux send-keys -t "$pane" 'claude --rc' Enter
