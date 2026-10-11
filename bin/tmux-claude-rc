@@ -2,9 +2,16 @@
 
 set -e
 
-# tmuxは-cに存在しないディレクトリを渡してもerrorにせず、別のディレクトリでwindowを開く
+# tmuxは-cに存在しないディレクトリを渡してもerrorにせず、別のディレクトリでshellを起動する
 dir=$(cd "${1:-.}" && pwd)
 
-# claudeをwindowのコマンドにすると、claudeの終了と同時にwindowが閉じ、起動に失敗した時のerrorを読めない
-pane=$(tmux new-window -c "$dir" -P -F '#{pane_id}')
-tmux send-keys -t "$pane" 'claude --rc' Enter
+# claudeをsessionのコマンドにすると、claudeの終了と同時にsessionが閉じ、起動に失敗した時のerrorを読めない
+session=$(tmux new-session -d -c "$dir" -P -F '#{session_id}')
+tmux send-keys -t "$session" 'claude --rc' Enter
+
+# 切り替える先のclientやterminalが無くても、sessionは作れているので失敗にしない
+if [ -n "$TMUX" ]; then
+  tmux switch-client -t "$session" 2>/dev/null || true
+else
+  tmux attach-session -t "$session" 2>/dev/null || true
+fi
