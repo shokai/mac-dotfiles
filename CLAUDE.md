@@ -14,3 +14,8 @@ oxfmt <changed-file>
 ```
 
 変更したファイルをformatする。個別ファイルにoxfmtを実行する方がプロジェクト全体にlintを実行するより高速。
+
+## 新規claude --rcの起動
+
+「新規claude --rcを起動して」「〇〇のclaude session作って」と言われたら `tmux-claude-rc <ディレクトリパス>` を実行する。
+過去にclaudeを使ったディレクトリは `~/.claude/projects/` のディレクトリ名から分かる。ディレクトリ名はpathの `/` と `.` を `-` に置き換えたもので、元のpathを一意には復元できない。`ls` で実在を確かめてからpathを決める。
