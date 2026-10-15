@@ -4,10 +4,32 @@ set -e
 
 # tmuxは-cに存在しないディレクトリを渡してもerrorにせず、別のディレクトリでshellを起動する
 dir=$(cd "${1:-.}" && pwd)
+name=$2
 
 # claudeをsessionのコマンドにすると、claudeの終了と同時にsessionが閉じ、起動に失敗した時のerrorを読めない
-session=$(tmux new-session -d -c "$dir" -P -F '#{session_id}')
+session=$(tmux new-session -d -c "$dir" ${name:+-s "$name"} -P -F '#{session_id}')
 tmux send-keys -t "$session" 'claude --rc' Enter
+
+# claudeはremote controlに接続すると、~/.claude/sessions/<pid>.jsonのbridgeSessionIdにremote sessionのIDを書く
+shell_pid=$(tmux display-message -p -t "$session" '#{pane_pid}')
+url=
+for _ in $(seq 60); do
+  for pid in $(pgrep -P "$shell_pid" || true); do
+    id=$(grep -o '"bridgeSessionId":"[^"]*"' ~/.claude/sessions/"$pid".json 2>/dev/null | cut -d'"' -f4)
+    if [ -n "$id" ]; then
+      url=https://claude.ai/code/$id
+    fi
+  done
+  if [ -n "$url" ]; then
+    break
+  fi
+  sleep 0.5
+done
+if [ -n "$url" ]; then
+  echo "$url"
+else
+  echo "remote sessionのURLを30秒以内に取得できなかった" >&2
+fi
 
 # 切り替える先のclientやterminalが無くても、sessionは作れているので失敗にしない
 if [ -n "$TMUX" ]; then

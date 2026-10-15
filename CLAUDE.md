@@ -17,5 +17,6 @@ oxfmt <changed-file>
 
 ## 新規claude --rcの起動
 
-「新規claude --rcを起動して」「〇〇のclaude session作って」と言われたら `tmux-claude-rc <ディレクトリパス>` を実行する。
+「新規claude --rcを起動して」「〇〇のclaude session作って」と言われたら `tmux-claude-rc <ディレクトリパス> <session名>` を実行し、出力されたremote sessionのURLをユーザーに伝える。
+tmuxのsession名は、指示の内容に合わせて簡潔に決める。指示に作業内容が無ければproject名にする。
 過去にclaudeを使ったディレクトリは `~/.claude/projects/` のディレクトリ名から分かる。ディレクトリ名はpathの `/` と `.` を `-` に置き換えたもので、元のpathを一意には復元できない。`ls` で実在を確かめてからpathを決める。
