@@ -2,16 +2,32 @@
 
 set -e
 
+window=
+if [ "$1" = -w ]; then
+  window=1
+  shift
+fi
+
 # tmuxは-cに存在しないディレクトリを渡してもerrorにせず、別のディレクトリでshellを起動する
 dir=$(cd "${1:-.}" && pwd)
 name=$2
 
-# claudeをsessionのコマンドにすると、claudeの終了と同時にsessionが閉じ、起動に失敗した時のerrorを読めない
-session=$(tmux new-session -d -c "$dir" ${name:+-s "$name"} -P -F '#{session_id}')
-tmux send-keys -t "$session" 'claude --rc' Enter
+# session名が空だと、tmuxは-t "=:"を今のsessionに解決し、そこにwindowを足す
+if [ -n "$window" ] && [ -z "$name" ]; then
+  echo "-wにはsession名を指定する: tmux-claude-rc -w <ディレクトリパス> <session名>" >&2
+  exit 1
+fi
+
+# claudeをsessionやwindowのコマンドにすると、claudeの終了と同時に閉じ、起動に失敗した時のerrorを読めない
+if [ -n "$window" ]; then
+  pane=$(tmux new-window -d -t "=$name:" -c "$dir" -P -F '#{pane_id}') # =が無いと、tmuxはsession名を前方一致でも解決し、別のsessionにwindowを足す
+else
+  pane=$(tmux new-session -d -c "$dir" ${name:+-s "$name"} -P -F '#{pane_id}')
+fi
+tmux send-keys -t "$pane" 'claude --rc' Enter
 
 # claudeはremote controlに接続すると、~/.claude/sessions/<pid>.jsonのbridgeSessionIdにremote sessionのIDを書く
-shell_pid=$(tmux display-message -p -t "$session" '#{pane_pid}')
+shell_pid=$(tmux display-message -p -t "$pane" '#{pane_pid}')
 url=
 for _ in $(seq 60); do
   for pid in $(pgrep -P "$shell_pid" || true); do
@@ -31,9 +47,10 @@ else
   echo "remote sessionのURLを30秒以内に取得できなかった" >&2
 fi
 
-# 切り替える先のclientやterminalが無くても、sessionは作れているので失敗にしない
+# 切り替える先のclientやterminalが無くても、paneは作れているので失敗にしない
+tmux select-window -t "$pane" 2>/dev/null || true # switch-clientやattach-sessionがcurrent windowを変えても、そのsessionを表示している他のclientは再描画されない
 if [ -n "$TMUX" ]; then
-  tmux switch-client -t "$session" 2>/dev/null || true
+  tmux switch-client -t "$pane" 2>/dev/null || true
 else
-  tmux attach-session -t "$session" 2>/dev/null || true
+  tmux attach-session -t "$pane" 2>/dev/null || true
 fi
