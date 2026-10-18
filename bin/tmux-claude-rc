@@ -14,7 +14,7 @@ name=$2
 
 # session名が空だと、tmuxは-t "=:"を今のsessionに解決し、そこにwindowを足す
 if [ -n "$window" ] && [ -z "$name" ]; then
-  echo "-wにはsession名を指定する" >&2
+  echo "-wにはsession名を指定する: tmux-claude-rc -w <ディレクトリパス> <session名>" >&2
   exit 1
 fi
 
@@ -48,6 +48,7 @@ else
 fi
 
 # 切り替える先のclientやterminalが無くても、paneは作れているので失敗にしない
+tmux select-window -t "$pane" 2>/dev/null || true # switch-clientやattach-sessionがcurrent windowを変えても、そのsessionを表示している他のclientは再描画されない
 if [ -n "$TMUX" ]; then
   tmux switch-client -t "$pane" 2>/dev/null || true
 else
