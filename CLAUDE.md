@@ -1,9 +1,6 @@
 # Coding Agentガイドライン
 
-## mainには直接commitしない、pushは明示的な指示を待つ
-
-mainブランチには直接commitしない。mainにいる場合はcommitせず停止し、branch名を提案してユーザーに確認する。
-pushはユーザーの明示的な指示を待つ。
+Claude Codeでユーザーがソフトウェア開発を始めた時にsoftware-factory-mode skillが呼び出されていなければ、「software-factory-mode skillを使う場合は、skillを呼び出してください」とユーザーに伝える。
 
 ## タスク完了後・git commit前に実行するコマンド
 
